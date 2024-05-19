@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*This is the source code of Tarzan Game Follow Me : */
+}
+
+.hide {
+    display: none;
+}
+
+.carGame {
+    width: 100%;
+    height: 100vh;
+    background-image: url("./media/avenger-modified.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.car {
+    width: 3rem;
+    height: 5.8rem;
+    position: absolute;
+    bottom: 50px;
+    left: 45%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    animation: changeBackground 120s infinite;
+}
+
+.enemy {
+    width: 2.5rem;
+    height: 5rem;
+    position: absolute;
+    bottom: 100px;
+    background-image: url(./media/bCar1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-items: center;
+
+}
+
+.gameArea {
+    width: 25rem;
+    height: 100vh;
+    background: #2C2C2C;
+    margin: auto;
+    position: relative;
+    color: azure;
+    font-size: x-small;
+    overflow: hidden;
+    background-size: cover;
+    border-left: 8px dashed #f7eded;
+    border-right: 8px dashed #fff;
+
+}
+
+.lines {
+    width: 0.8rem;
+    height: 5.5rem;
+    background: rgb(209, 181, 181);
+    position: absolute;
+    margin-left: 12rem;
+    border-radius: 1.5rem;
+}
+
+.score {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    width: 15%;
+    height: 5rem;
+    line-height: 4rem;
+    text-align: center;
+    color: Red;
+    text-shadow: #777;
+    font-size: 1.8em;
+    font-family: fantasy;
+    box-shadow: 0 5px 5px #777;
+    overflow: hidden;
+    background-image: url(./media/scoreCard.jpg);
+    background-size: cover;
+    padding-top: 1rem;
+    border-radius: 1rem;
+}
+
+
+:root {
+
+    --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
+}
+
+
+.fire::before,
+.fire::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.fire::before {
+    content: "";
+    background-image: var(--glitter), var(--glitter),
+        linear-gradient(
+            0deg,
+            white 0px,
+            #ff8951 5px,
+            #dcbc169c 30%,
+            transparent 70%
+        ),
+        radial-gradient(ellipse at bottom, transparent 30%, black 60%);
+    background-size: 350px 500px, 400px 650px, 100% 100%, 100% 100%;
+    background-blend-mode: hard-light, color-dodge, multiply;
+    background-position: 0px 0px, 0px 0px, var(--gradientPos);
+    background-repeat: repeat, repeat, repeat, no-repeat;
+    mix-blend-mode: color-dodge;
+    filter: brightness(3.7) blur(7px) contrast(6);
+    animation: fire 1.75s linear infinite;
+    box-shadow: inset 0 -40px 50px -60px #63bbc5;
+}
+
+@keyframes fire {
+    0% {
+        background-position: center 0px, center 0px, 50% 100%, center center;
+    }
+    100% {
+        background-position: center -500px, center -650px, 50% 100%, center center;
+    }
+}
+
+.startScreen {
+    position: absolute;
+    background: url(./media/gameScreenTexture2.png);
+    background-size: contain;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: 2A0001;
+    z-index: 10;
+    text-align: center;
+    padding-bottom: 5rem;
+    padding-top: 2rem;
+    margin: auto;
+    width: 40%;
+    cursor: pointer;
+    letter-spacing: 10;
+    font-size: 2rem;
+    word-spacing: 3;
+    line-height: 2rem;
+    border-radius: 1rem;
+    font-weight: 900;
+    }
+
+.developerInfo {
+    position: fixed;
+    bottom: 0.8rem;
+    left: 0.8rem;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-image: url(./media/texture.jpg);
+    background-size: cover;
+}
+
+.developerInfo p {
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+.developerInfo a {
+    color: #000;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.boost {
+    position: absolute;
+    width: 28px;
+    height: 30px;
+    background-color: transparent;
+    animation: pulsate 1s infinite;
+}
+
+.boost::before,
+.boost::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 50px;
+    background-color: rgb(215, 18, 51);
+    border-radius: 15px 15px 0 0;
+    top: 0;
+}
+
+.boost::before {
+    left: 15px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.boost::after {
+    left: -15px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.mobile-warning {
+    display: none;
+    margin: auto;
+    width: 70%;
+    background-color: #ffcccc;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1000;
+}
+
+@media only screen and (max-width: 768px) {
+    .mobile-warning {
+        display: block;
+       
+    }
+    .carGame {
+        display: none;
+    }
+}
+
+@keyframes changeBackground {
+    0% {
+        background-image: url(./media/aCar.png);
+    }
+
+    33.33% {
+        background-image: url(./media/aCar1.png);
+    }
+
+    66.66% {
+        background-image: url(./media/bCar.png);
+    }
+
+    100% {
+        background-image: url(./media/aCar2.png);
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1.);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
